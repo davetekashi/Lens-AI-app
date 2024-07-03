@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+gunicorn
+opencv-python
+numpy
+pymongo
+gridfs
+bson
+typing
+pydantic
+dlib

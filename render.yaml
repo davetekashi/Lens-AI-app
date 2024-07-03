@@ -1,0 +1,20 @@
+databases:
+  - name: mysitedb
+    plan: free
+    databaseName: paylensdb
+    user: mysite
+
+services:
+  - type: web
+    plan: free
+    name: mysite
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:80"
+    envVars:
+      - key: DATABASE_URL
+        value: "mongodb+srv://davidihenatuoha:VCWFM86dntXkYI1P@cluster0.3iifs6b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
